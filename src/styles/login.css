@@ -1,0 +1,141 @@
+/* Estilos generales para el login */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F8EDEB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    background: #F8EDEB;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 20px;
+    padding: 14px;
+    width: 100%;
+    font-size: 18px;
+    font-style: italic;
+    color: #333;
+    outline: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+    font-style: italic;
+    text-align: center;
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+button {
+    background: linear-gradient(to right, #4CAF50, #43A047);
+    border: none;
+    border-radius: 20px;
+    padding: 14px;
+    width: 100%;
+    font-size: 18px;
+    font-style: italic;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+button:hover {
+    background: linear-gradient(to right, #45a049, #388E3C);
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.social-login button {
+    background: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.social-login button:hover {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.social-login button img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 480px) {
+    .login-container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .social-login {
+        flex-direction: row;
+        gap: 10px;
+    }
+}
+
