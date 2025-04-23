@@ -15,7 +15,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             {/*<Route path="/agregar-platillo" element={<ProtectedRoute><AddPlatillo /></ProtectedRoute>} />*/}
-            <Route path="/agregar-platillo" element={<AddPlatillo />} />
+            <Route path="/addDish" element={<AddPlatillo />} />
             {/*para las demás */}
           </Routes>
         </div>
