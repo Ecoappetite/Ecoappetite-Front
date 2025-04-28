@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Definir la URL base del backend
-const API_URL = "http://localhost:8080"; // Asegúrate de cambiar esto a la URL correcta
+const API_URL = "http://localhost:8080"; // Cambia esto si el backend está en otra URL o puerto
 
 // Crear una instancia de Axios
 const api = axios.create({
@@ -11,10 +11,10 @@ const api = axios.create({
   },
 });
 
-// Agregar interceptor para incluir el token en las peticiones
+// Interceptor para incluir el token JWT en cada petición
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token"); // Leer el token almacenado
+    const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -23,13 +23,13 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Manejar errores de autenticación globalmente
+// Interceptor para manejar respuestas con error 401 (no autorizado)
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem("token"); // Eliminar el token si es inválido
-      window.location.href = "/login"; // Redirigir al login
+      localStorage.removeItem("token");
+      window.location.href = "/login"; // Redirige al login
     }
     return Promise.reject(error);
   }

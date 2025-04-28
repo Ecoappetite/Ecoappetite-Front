@@ -1,11 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; //new
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+// Contexto de autenticación
 import { AuthProvider } from "./context/AuthContext";
+
+// Rutas protegidas (comentado si aún no implementas token/login)
 import ProtectedRoute from "./components/ProtectedRoute";
-import Login from "./pages/Login"; // Importamos la pantalla de login
+
+// Páginas
+import Login from "./pages/Login";
 import AddPlatillo from "./pages/AddPlatillo";
-import "./App.css"; 
+
+// Estilos generales
+import "./App.css";
 
 function App() {
   return (
@@ -13,10 +21,16 @@ function App() {
       <Router>
         <div className="app-container">
           <Routes>
+            {/* Ruta de inicio de sesión */}
             <Route path="/login" element={<Login />} />
-            {/*<Route path="/agregar-platillo" element={<ProtectedRoute><AddPlatillo /></ProtectedRoute>} />*/}
+
+            {/* Ruta protegida (opcional) */}
+            {/* <Route path="/addDish" element={<ProtectedRoute><AddPlatillo /></ProtectedRoute>} /> */}
+
+            {/* Ruta abierta para añadir platillo */}
             <Route path="/addDish" element={<AddPlatillo />} />
-            {/*para las demás */}
+
+            {/* Aquí podrías agregar más rutas si las tienes */}
           </Routes>
         </div>
       </Router>
