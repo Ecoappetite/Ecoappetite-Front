@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 // Definir la URL base del backend
 const API_URL = "http://localhost:8080"; // Cambia esto si el backend está en otra URL o puerto

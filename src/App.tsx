@@ -5,12 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // Contexto de autenticación
 import { AuthProvider } from "./context/AuthContext";
 
-// Rutas protegidas (comentado si aún no implementas token/login)
-import ProtectedRoute from "./components/ProtectedRoute";
-
 // Páginas
 import Login from "./pages/Login";
-import AddPlatillo from "./pages/AddPlatillo";
 
 // Estilos generales
 import "./App.css";
@@ -19,6 +15,23 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <div className="falling-leaves">
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+          <div className="leaf"></div>
+        </div>
         <div className="app-container">
           <Routes>
             {/* Ruta de inicio de sesión */}
@@ -27,8 +40,6 @@ function App() {
             {/* Ruta protegida (opcional) */}
             {/* <Route path="/addDish" element={<ProtectedRoute><AddPlatillo /></ProtectedRoute>} /> */}
 
-            {/* Ruta abierta para añadir platillo */}
-            <Route path="/addDish" element={<AddPlatillo />} />
 
             {/* Aquí podrías agregar más rutas si las tienes */}
           </Routes>
