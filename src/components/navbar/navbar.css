@@ -1,0 +1,74 @@
+.navbar {
+  background: white !important;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 64px;
+}
+
+.logo {
+  margin-right: 40px;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    margin-top: 27px;
+  }
+
+.nav-menu {
+  flex: 1;
+  justify-content: flex-end;
+  border: none;
+  background: transparent;
+}
+
+/* Sobreescribir estilos de Ant Design */
+.ant-menu-horizontal {
+  border-bottom: none !important;
+}
+
+.ant-menu-item {
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+}
+
+.ant-menu-item:hover {
+  color: var(--primary-color) !important;
+}
+
+.ant-menu-item-selected {
+  color: var(--primary-color) !important;
+}
+
+.ant-menu-item::after {
+  background: var(--primary-color) !important;
+}
+
+.logout-item {
+  margin-left: 20px;
+}
+
+.logout-item:hover {
+  color: var(--error-color) !important;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 10px;
+  }
+
+  .logo {
+    margin-right: 20px;
+  }
+
+  .ant-menu-item {
+    padding: 0 10px !important;
+  }
+}

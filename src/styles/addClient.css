@@ -1,0 +1,257 @@
+.form-container-client {
+    max-width: 1600px;
+    margin: 20px auto;
+    padding: 0 2rem;
+  }
+
+  .client-form {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .form-grid-client {
+    grid-column: span 4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  .form-group-client {
+    background: linear-gradient(145deg, #ffffff, #f5f5f5);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-width: 215px;
+    min-height: 75px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group-client:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--primary-lighter);
+  }
+
+  .form-group-client:focus-within {
+    background: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-lighter);
+  }
+
+  .form-group-client label {
+    color: var(--primary-dark);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    display: block;
+    letter-spacing: 0.3px;
+    text-align: left;
+    padding-left: 5%;
+  }
+
+  .client-form input,
+  .client-form textarea,
+  .categoria-select {
+    width: 75%;
+    height: 32px;
+    min-height: 32px;
+    padding: 0.5rem 0.75rem;
+    margin: 0 auto;
+    display: block;
+    font-size: 0.9rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: white;
+    box-shadow: var(--input-shadow);
+    transition: var(--transition);
+  }
+
+  .client-form textarea {
+    height: auto;
+    min-height: 32px;
+    max-height: 50px;
+  }
+
+  .client-form input:focus,
+  .client-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(67, 160, 71, 0.1);
+    outline: none;
+    background-color: var(--primary-bg);
+  }
+
+  /* Eliminar estilos del Select de Ant Design */
+  .categoria-select,
+  .ant-select-selector {
+    display: none;
+  }
+
+  /* Asegurar que el input de categoría tenga el mismo estilo que los demás */
+  .form-group-client input[list] {
+    width: 75%;
+    height: 32px;
+    padding: 0.5rem 0.75rem;
+    margin: 0 auto;
+    display: block;
+    font-size: 0.9rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: white;
+    box-shadow: var(--input-shadow);
+    transition: var(--transition);
+  }
+
+  /* Estilos del header */
+  .form-header-client {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    grid-column: span 4;
+    animation: fadeIn 0.6s ease-out;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+
+  .form-header-client h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+  }
+
+  .form-header-client p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Botones */
+  .form-actions-client {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 1rem 0;
+  }
+
+  .submit-button-client {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 200px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .submit-button-client:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(67, 160, 71, 0.3);
+    background: var(--hover-gradient);
+  }
+
+  .cancel-button {
+    padding: 1rem 2.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-weight: 500;
+    min-width: 200px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: white;
+    color: var(--text-secondary);
+  }
+
+  .cancel-button:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+  }
+
+  .error-text {
+    padding-left: 5%;
+    margin-top: 0.25rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .client-form,
+    .form-grid-client {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .client-form,
+    .form-grid-client {
+      grid-template-columns: 1fr;
+    }
+
+    .form-actions-client {
+      flex-direction: column;
+    }
+
+    .submit-button-client,
+    .cancel-button {
+      width: 100%;
+    }
+  }
+
+  .platillos-select {
+    width: 90%;
+    height: 40px;
+    padding: 0.5rem;
+    margin: 0 auto;
+    display: block;
+    font-size: 0.95rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: white;
+    box-shadow: var(--input-shadow);
+    transition: var(--transition);
+    cursor: pointer;
+    color: #333; /* Color de texto oscuro */
+  }
+
+  .platillos-select option {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    background: white;
+    color: #333; /* Color de texto oscuro */
+  }
+
+  .platillos-select option:first-child {
+    color: #666; /* Color más claro para la opción placeholder */
+  }
+
+  .platillos-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(67, 160, 71, 0.1);
+    outline: none;
+  }
