@@ -7,7 +7,9 @@ import { AuthProvider } from "./context/AuthContext";
 
 // Páginas
 import Login from "./pages/Login";
-
+import AddPlatillo from "./pages/AddPlatillo";
+import AddRestaurant from "./pages/AddRestaurant";
+import AddClient from "./pages/AddClient";
 // Estilos generales
 import "./App.css";
 
@@ -40,6 +42,14 @@ function App() {
             {/* Ruta protegida (opcional) */}
             {/* <Route path="/addDish" element={<ProtectedRoute><AddPlatillo /></ProtectedRoute>} /> */}
 
+            {/* Ruta abierta para añadir platillo */}
+            <Route path="/addDish" element={<AddPlatillo />} />
+
+              {/* Ruta abierta para añadir restaurante */}
+            <Route path="/addRestaurant" element={<AddRestaurant />} />
+
+                {/* Ruta abierta para añadir cliente */}
+            <Route path="/addClient" element={<AddClient />} />
 
             {/* Aquí podrías agregar más rutas si las tienes */}
           </Routes>
