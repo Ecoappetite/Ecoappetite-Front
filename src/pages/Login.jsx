@@ -12,8 +12,8 @@ import "../styles/login.css";
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: "",
-    password: ""
+    correo: "",       // Cambiado de "email" a "correo"
+    contrasena: ""    // Cambiado de "password" a "contrasena"
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,22 +24,34 @@ const Login = () => {
       ...prev,
       [name]: value
     }));
-    // Limpiar error cuando el usuario empiece a escribir
     if (error) setError("");
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.email || !formData.password) {
+    e.preventDefault(); // Evita el comportamiento predeterminado del formulario
+
+    if (!formData.correo || !formData.contrasena) {
       setError("Por favor completa todos los campos");
       return;
     }
-    
+
     setLoading(true);
     try {
-      await loginService(formData.email, formData.password);
-      navigate("/addDish");
+      console.log("Intentando iniciar sesión con:", formData);
+
+      const response = await loginService(formData.correo, formData.contrasena);
+      console.log("Respuesta del servidor:", response);
+
+      // Verificar si el token existe en la respuesta
+      if (response) {
+        localStorage.setItem("token", response); // Guardar el token directamente
+        console.log("Token almacenado:", response);
+        navigate("/addDish");
+      } else {
+        setError("Las credenciales ingresadas son inválidas");
+      }
     } catch (err) {
+      console.error("Error en el login:", err.message);
       setError("Las credenciales ingresadas son inválidas");
     } finally {
       setLoading(false);
@@ -52,9 +64,9 @@ const Login = () => {
         <div className="login-brand">
           <div className="brand-content">
             <div className="brand-header">
-              <img 
-                src="/src/assets/images/logosolo.jpg" 
-                alt="Ecoappetite Logo" 
+              <img
+                src="/src/assets/images/logosolo.jpg"
+                alt="Ecoappetite Logo"
                 className="brand-logo"
               />
               <h1 className="brand-title">ECOAPPETITE</h1>
@@ -66,13 +78,13 @@ const Login = () => {
             <div className="brand-features">
               <div className="feature" role="listitem">
                 <span className="feature-icon" aria-hidden="true">🌱</span>
-                <h3>Ingredientes</h3>
-                <p>100% orgánicos y sostenibles</p>
+                <h3>Sostenibilidad</h3>
+                <p>Aprovechamiento inteligente de recursos</p>
               </div>
               <div className="feature" role="listitem">
-                <span className="feature-icon" aria-hidden="true">🏆</span>
-                <h3>Certificados</h3>
-                <p>Estándares internacionales</p>
+                <span className="feature-icon" aria-hidden="true">🌍</span>
+                <h3>Impacto</h3>
+                <p>Reducción del desperdicio alimentario</p>
               </div>
               <div className="feature" role="listitem">
                 <span className="feature-icon" aria-hidden="true">💰</span>
@@ -101,14 +113,14 @@ const Login = () => {
                   {error}
                 </div>
               )}
-              
+
               <div className="form-group">
                 <div className="input-icon-wrapper">
                   <EmailOutlinedIcon className="input-icon" aria-hidden="true" />
                   <input
                     type="email"
-                    name="email"
-                    value={formData.email}
+                    name="correo"      // Ajustado de "email" a "correo"
+                    value={formData.correo}
                     onChange={handleChange}
                     placeholder="Correo electrónico"
                     aria-label="Correo electrónico"
@@ -122,8 +134,8 @@ const Login = () => {
                   <LockOutlinedIcon className="input-icon" aria-hidden="true" />
                   <input
                     type="password"
-                    name="password"
-                    value={formData.password}
+                    name="contrasena"   // Ajustado de "password" a "contrasena"
+                    value={formData.contrasena}
                     onChange={handleChange}
                     placeholder="Contraseña"
                     aria-label="Contraseña"

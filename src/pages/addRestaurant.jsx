@@ -27,7 +27,13 @@ const validationSchema = Yup.object({
     .url('Debe ser una URL válida'),
   descripcion: Yup.string()
     .required('Descripción es requerida')
-    .min(10, 'Mínimo 10 caracteres')
+    .min(10, 'Mínimo 10 caracteres'),
+  correo: Yup.string()
+     .email('Correo electrónico inválido')
+     .required('El correo es requerido'),
+  contrasena: Yup.string()
+     .min(8, 'La contraseña debe tener al menos 8 caracteres')
+     .required('La contraseña es requerida')
 });
 
 const AddRestaurant = () => {
@@ -46,6 +52,15 @@ const AddRestaurant = () => {
     } finally {
       setSubmitting(false);
     }
+    const usuarioData = {
+        correo: values.correo,
+        contrasena: values.contrasena,
+        rol: "CONSUMIDOR"
+    };
+     const payload = {
+        usuario: usuarioData,
+        consumidor: clienteData,
+      };
   };
 
   return (
@@ -163,7 +178,32 @@ const AddRestaurant = () => {
                     />
                     <ErrorMessage name="descripcion" component="span" className="error-text" />
                   </div>
-                </div>
+
+                  <div className="form-group-client">
+                      <label htmlFor="correo">Correo del Usuario*</label>
+                      <Field type="text" name="correo" placeholder="usuario@ejemplo.com" />
+                      <ErrorMessage name="correo" component="span" className="error-text" />
+                  </div>
+
+                  <div className="form-group-client">
+                      <label htmlFor="contrasena">Contraseña del Usuario*</label>
+                      <div className="password-wrapper">
+                        <Field
+                          type={showPassword ? "text" : "password"}
+                          name="contrasena"
+                          placeholder="********"
+                        />
+                        <button
+                          type="button"
+                          onClick={togglePasswordVisibility}
+                          className="toggle-password"
+                        >
+                          {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </button>
+                      </div>
+                      <ErrorMessage name="contrasena" component="span" className="error-text" />
+                    </div>
+                  </div>
 
                 <div className="form-actions-restaurant">
                   <button type="button" className="cancel-button" onClick={() => navigate(-1)}>
