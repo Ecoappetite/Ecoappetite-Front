@@ -58,6 +58,16 @@ const Login = () => {
     }
   };
 
+  // ✅ Función para redirigir al formulario de restaurante
+   const handleRegisterRestaurant = () => {
+     navigate("/addRestaurant");
+   };
+
+   // ✅ Función para redirigir al formulario de consumidor
+   const handleRegisterConsumer = () => {
+     navigate("/addClient");
+   };
+
   return (
     <div className="login-container">
       <div className="login-wrapper">
@@ -176,6 +186,7 @@ const Login = () => {
                     type="button" 
                     className="register-button restaurant"
                     aria-label="Registro para Restaurantes"
+                    onClick={handleRegisterRestaurant}
                   >
                     <RestaurantIcon aria-hidden="true" />
                     <span>Restaurante</span>
@@ -184,6 +195,7 @@ const Login = () => {
                     type="button" 
                     className="register-button consumer"
                     aria-label="Registro para Consumidores"
+                    onClick={handleRegisterConsumer}
                   >
                     <PersonOutlineIcon aria-hidden="true" />
                     <span>Consumidor</span>
