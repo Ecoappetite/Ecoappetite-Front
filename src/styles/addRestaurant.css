@@ -222,3 +222,16 @@
     width: 100%;
   }
 }
+ .password-wrapper {
+   position: relative;
+   display: flex;
+   align-items: center;
+ }
+
+ .toggle-password {
+   margin-left: -85px;
+   background: none;
+   border: none;
+   cursor: pointer;
+   color: #333;
+ }

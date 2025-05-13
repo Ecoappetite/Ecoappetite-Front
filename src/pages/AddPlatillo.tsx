@@ -119,7 +119,7 @@ const AddPlatillo = () => {
         nitRestaurante: platillo.nitRestaurante.replace(/[^\d\-]/g, '')
       };
 
-      const response = await axios.post('/platillo', platilloData);
+      const response = await axios.put(`http://localhost:8080/restaurante/${platillo.nitRestaurante}/platillo`, platilloData);
 
       if (response.status === 201 || response.status === 200) {
         setShowSuccessMessage(true);
@@ -213,7 +213,7 @@ const AddPlatillo = () => {
                     onChange={handleChange}
                     className={formErrors.precioOriginal ? 'error' : ''}
                     min="0"
-                    step="100"
+                    step="8000"
                   />
                   {formErrors.precioOriginal && <span className="error-text">{formErrors.precioOriginal}</span>}
                 </div>
@@ -229,7 +229,7 @@ const AddPlatillo = () => {
                     onChange={handleChange}
                     className={formErrors.precioDescuento ? 'error' : ''}
                     min="0"
-                    step="100"
+                    step="5000"
                   />
                   {formErrors.precioDescuento && <span className="error-text">{formErrors.precioDescuento}</span>}
                 </div>
