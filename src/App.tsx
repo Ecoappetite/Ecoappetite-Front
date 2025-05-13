@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+
 // Contexto de autenticación
 import { AuthProvider } from "./context/AuthContext";
 
@@ -10,6 +11,7 @@ import Login from "./pages/Login";
 import AddPlatillo from "./pages/AddPlatillo";
 import AddRestaurant from "./pages/AddRestaurant";
 import AddClient from "./pages/AddClient";
+import RestaurantCatalog from "./pages/CatalogRestaurants";
 // Estilos generales
 import "./App.css";
 
@@ -50,6 +52,9 @@ function App() {
 
                 {/* Ruta abierta para añadir cliente */}
             <Route path="/addClient" element={<AddClient />} />
+
+                {/* Ruta abierta para ver el catalogo */}
+            <Route path="/catalogRestaurants" element={<RestaurantCatalog />} />
 
             {/* Aquí podrías agregar más rutas si las tienes */}
           </Routes>

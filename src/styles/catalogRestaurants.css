@@ -1,0 +1,455 @@
+/* catalogRestaurants.css */
+
+/* General Styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f9fafb;
+  color: #1f2937;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Search Input */
+.search-input {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 0 16px 0 42px;
+  background-color: white;
+  font-size: 0.95rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+/* Restaurant Card - Horizontal Design */
+.restaurant-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: row; /* Changed to horizontal layout */
+}
+
+.restaurant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.restaurant-card img {
+  transition: transform 0.3s;
+}
+
+.restaurant-card:hover img {
+  transform: scale(1.05);
+}
+
+.restaurant-card-content {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Restaurant Logo */
+.logo-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+/* Grid Layout - Modified for horizontal display */
+.restaurants-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+/* Promotion Tag */
+.promotion-tag {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  color: #0369a1;
+  font-weight: 600;
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+}
+
+/* Restaurant Info */
+.restaurant-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #111827;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.restaurant-meta {
+  display: flex;
+  align-items: center;
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-top: auto;
+}
+
+.restaurant-meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.restaurant-meta-divider {
+  margin: 0 8px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: #111827;
+}
+
+.rating-star {
+  color: #facc15;
+  margin-right: 4px;
+}
+
+/* Image Container */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  width: 120px; /* Fixed width for horizontal card */
+  min-width: 120px; /* Ensure minimum width */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Header */
+.app-header {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  margin-left: 8px;
+  color: #111827;
+}
+
+.login-button {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #16a34a;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+  color: #22c55e;
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty State */
+.empty-state {
+  background-color: white;
+  border-radius: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin: 32px 0;
+}
+
+.empty-state-icon {
+  color: #e5e7eb;
+  margin-bottom: 16px;
+}
+
+.empty-state-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.empty-state-message {
+  color: #6b7280;
+}
+
+/* Error State */
+.error-alert {
+  background-color: #fee2e2;
+  border-left: 4px solid #ef4444;
+  padding: 16px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: #b91c1c;
+  font-size: 0.875rem;
+}
+
+.retry-button {
+  margin-top: 8px;
+  color: #b91c1c;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Background Overlay */
+.background-overlay {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  z-index: -1;
+}
+
+/* Category tag */
+.category-tag {
+  display: inline-block;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .restaurant-card {
+    height: 140px; /* Fixed height for consistent look */
+  }
+  
+  .image-container {
+    width: 140px;
+    min-width: 140px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .restaurants-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .restaurants-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .restaurant-card {
+    flex-direction: row; /* Keep horizontal layout on small screens */
+    height: auto;
+  }
+  
+  .image-container {
+    width: 100px;
+    min-width: 100px;
+    height: 100%;
+  }
+  
+  .restaurant-name {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 1; /* Only show 1 line on mobile */
+  }
+  
+  .promotion-tag {
+    font-size: 0.65rem;
+    padding: 2px 5px;
+  }
+}
+
+/* Animation for cards when they appear */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.restaurant-card {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Staggered animation delay for grid items */
+.restaurants-grid .restaurant-card:nth-child(1) { animation-delay: 0.05s; }
+.restaurants-grid .restaurant-card:nth-child(2) { animation-delay: 0.1s; }
+.restaurants-grid .restaurant-card:nth-child(3) { animation-delay: 0.15s; }
+.restaurants-grid .restaurant-card:nth-child(4) { animation-delay: 0.2s; }
+.restaurants-grid .restaurant-card:nth-child(5) { animation-delay: 0.25s; }
+
+/* Distance and delivery info badges */
+.info-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f3f4f6;
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 0.7rem;
+  color: #4b5563;
+}
+
+.info-badge svg {
+  margin-right: 3px;
+}
+
+/* Restaurant card header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.restaurant-logo-name {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add more spacing for content in horizontal cards */
+.restaurant-card-content {
+  padding: 12px 16px;
+}
+
+/* Make restaurant name a bit larger in horizontal layout */
+.restaurant-name {
+  margin-top: 0;
+}
+.container {
+  padding-top: 64px; /* altura del navbar */
+}
+.text-xl font-bold mb-4 {
+  background-color: white;
+  border-radius: 0.5rem; /* equivalente a rounded-lg */
+  padding: 1rem;         /* equivalente a p-4 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* equivalente a shadow */
+  font-size: 1.25rem;    /* text-xl */
+  font-weight: 700;      /* font-bold */
+  margin-bottom: 1rem;   /* mb-4 */
+  color: #1f2937;        /* text-gray-800 */
+}
+
+.restaurant-heading {
+  background-color: white;
+  border-radius: 0.5rem; /* equivalente a rounded-lg */
+  padding: 1rem;         /* equivalente a p-4 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* equivalente a shadow */
+  font-size: 1.25rem;    /* text-xl */
+  font-weight: 700;      /* font-bold */
+  margin-bottom: 1rem;   /* mb-4 */
+  color: #1f2937;        /* text-gray-800 */
+}
+
+.restaurant-heading span {
+  font-weight: 400;      /* font-normal */
+  color: #6b7280;        /* text-gray-500 */
+}
