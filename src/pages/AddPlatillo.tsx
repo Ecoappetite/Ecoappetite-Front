@@ -76,7 +76,6 @@ const AddPlatillo = () => {
       ...prev,
       [name]: value
     }));
-    // Limpiar el error del campo que se está editando
     if (formErrors[name]) {
       setFormErrors(prev => ({
         ...prev,
@@ -111,19 +110,49 @@ const AddPlatillo = () => {
     setIsSubmitting(true);
     try {
       const platilloData = {
-        ...platillo,
+        nombre: platillo.nombre,
         precioOriginal: parseFloat(platillo.precioOriginal),
         precioDescuento: parseFloat(platillo.precioDescuento),
+        categoriaPlatillo: platillo.categoriaPlatillo,
+        estadoPlatillo: platillo.estadoPlatillo,
         cantidadDisponible: parseInt(platillo.cantidadDisponible),
-        // Asegurarse de que el NIT tenga el formato correcto
-        nitRestaurante: platillo.nitRestaurante.replace(/[^\d\-]/g, '')
+        imagen: platillo.imagen,
+        descripcion: platillo.descripcion
       };
 
-      const response = await axios.put(`http://localhost:8080/restaurante/${platillo.nitRestaurante}/platillo`, platilloData);
+      const token = localStorage.getItem('token');
+      console.log("Token JWT (sin Bearer):", token);
 
-      if (response.status === 201 || response.status === 200) {
+      if (!token) {
+        console.error("Token no encontrado en localStorage");
+        return;
+      }
+
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const currentTimestamp = Math.floor(Date.now() / 1000);
+
+      if (payload.exp < currentTimestamp) {
+        console.error("El token ha expirado.");
+        return;
+      } else {
+        console.log("El token es válido. Continuando con la solicitud.");
+      }
+
+      const config = {
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json'
+        }
+      };
+
+      const response = await axios.put(
+        `http://localhost:8080/restaurante/${platillo.nitRestaurante}/platillo`,
+        platilloData,
+        config
+      );
+
+      if (response.status === 200) {
         setShowSuccessMessage(true);
-        // Resetear el formulario después de 2 segundos
         setTimeout(() => {
           setPlatillo({
             nombre: '',
@@ -140,11 +169,10 @@ const AddPlatillo = () => {
         }, 2000);
       }
     } catch (error: any) {
-      const errorMessage = error.response?.data?.message || 'Error al agregar el platillo';
-      setFormErrors({
-        submit: errorMessage
-      });
       console.error('Error al enviar platillo:', error);
+      setFormErrors({
+        submit: error.response?.data?.message || 'Error al actualizar el platillo'
+      });
     } finally {
       setIsSubmitting(false);
     }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-//DEFINIR LA URL DEL BACKEND
+// URL del backend
 const API_URL = "http://localhost:8080";
 
 const api = axios.create({
@@ -10,31 +10,30 @@ const api = axios.create({
   },
 });
 
+// Interceptor para agregar el token de manera automática
 api.interceptors.request.use(
   (config) => {
-    console.log("Solicitud enviada a:", config.url);
-    console.log("Datos de la solicitud:", config.data);
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token"); // Obtener el token del localStorage
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`; // Agregar el token al encabezado
     }
     return config;
   },
   (error) => {
-    console.error("Error en la solicitud:", error); //  Corrección: Añadir return para la promesa
-    return Promise.reject(error);  //  Corrección: Añadir return aquí
+    console.error("Error en la solicitud:", error);
+    return Promise.reject(error);
   }
 );
 
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-      console.error("Error en la respuesta:", error.response?.data || error.message);
-      if (error.response?.status === 401) {
-        localStorage.removeItem("token");
-        window.location.href = "/login";
-      }
-      return Promise.reject(error);
+    console.error("Error en la respuesta:", error.response?.data || error.message);
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");
+      window.location.href = "/login"; // Redirige al login si el token es inválido
+    }
+    return Promise.reject(error);
   }
 );
 

@@ -62,7 +62,7 @@ const AddClient = () => {
 
       console.log("Payload enviado:", payload);
 
-      await axios.post('http://localhost:8080/consumidor', payload);
+      await axios.post('http://localhost:8080/consumidor', payload,{ withCredentials: true });
       alert('Cliente registrado exitosamente');
       navigate('/login');
     } catch (error) {
