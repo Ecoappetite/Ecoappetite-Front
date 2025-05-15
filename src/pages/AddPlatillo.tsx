@@ -23,6 +23,7 @@ const AddPlatillo = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const [platillo, setPlatillo] = useState({
+    nombreRestaurante: '',
     nombre: '',
     precioOriginal: '',
     precioDescuento: '',
@@ -36,6 +37,10 @@ const AddPlatillo = () => {
 
   const validateForm = () => {
     const errors: FormErrors = {};
+
+    if (!platillo.nombreRestaurante.trim()) {
+          errors.nombreRestaurante = 'El nombre del restaurante es requerido';
+    }
 
     if (!platillo.nombre.trim()) {
       errors.nombre = 'El nombre es requerido';
@@ -110,6 +115,7 @@ const AddPlatillo = () => {
     setIsSubmitting(true);
     try {
       const platilloData = {
+        nitRestaurante: platillo.nitRestaurante,
         nombre: platillo.nombre,
         precioOriginal: parseFloat(platillo.precioOriginal),
         precioDescuento: parseFloat(platillo.precioDescuento),
@@ -146,7 +152,7 @@ const AddPlatillo = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:8080/restaurante/${platillo.nitRestaurante}/platillo`,
+        `http://localhost:8080/restaurante/${platillo.nombreRestaurante}/platillo`,
         platilloData,
         config
       );
@@ -216,6 +222,19 @@ const AddPlatillo = () => {
           <form onSubmit={handleSubmit} className="addPlatillo-form">
             <div className="form-left-panel">
               <div className="form-grid">
+                <div className="form-group">
+                  <label htmlFor="nombreRestaurante">Nombre del Restaurante*</label>
+                  <input
+                    id="nombreRestaurante"
+                    type="text"
+                    name="nombreRestaurante"
+                    placeholder="Ej: Restaurante.."
+                    value={platillo.nombreRestaurante}
+                    onChange={handleChange}
+                    className={formErrors.nombreRestaurante ? 'error' : ''}
+                  />
+                  {formErrors.nombreRestaurante && <span className="error-text">{formErrors.nombreRestaurante}</span>}
+                </div>
                 <div className="form-group">
                   <label htmlFor="nombre">Nombre del Platillo*</label>
                   <input

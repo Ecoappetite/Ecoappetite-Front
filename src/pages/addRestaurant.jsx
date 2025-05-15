@@ -58,10 +58,27 @@ const AddRestaurant = () => {
         return;
       }
 
+      const variable ={
+          "usuario": {
+              "correo": values.correo,
+              "contrasena": values.contrasena
+          },
+          "restaurante":{
+              "nit": values.nit,
+              "nombre": values.nombre,
+              "direccion": values.direccion,
+              "telefono": values.telefono,
+              "whatsapp": values.whatsapp,
+              "categoria": values.categoria ,
+              "imagen": values.imagen,
+              "descripcion": values.descripcion
+          }
+      }
+
       // Enviar la solicitud POST al backend con el token en la cabecera Authorization
       const response = await axios.post(
-        'http://localhost:8080/restaurante', // URL del backend
-        values, // Los valores del formulario
+        'http://localhost:8080/registro/restaurante', // URL del backend
+        variable, // Los valores del formulario
         {
           headers: {
             'Authorization': `${token}`, // Incluir el token en la cabecera

@@ -27,21 +27,9 @@ const Navbar = () => {
       label: "Agregar Platillo",
       onClick: () => navigate("/addDish"),
     },
-    // agregar ´platillo
-    {
-      key: "addRestaurant",
-      icon: <PlusCircleOutlined />,
-      label: "Agregar Restaurante",
-      onClick: () => navigate("/addRestaurant"),
-    },
 
-    // agregar cliente
-    {
-        key: "addClient",
-        icon: <PlusCircleOutlined />,
-        label: "Agregar Cliente",
-        onClick: () => navigate("/addClient"),
-    },
+
+
 
     {
       key: "profile",

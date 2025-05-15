@@ -19,8 +19,6 @@ const validationSchema = Yup.object({
     .matches(/^3\d{9}$/, 'Formato: 3'),
   direccion: Yup.string()
     .required('La dirección es requerida'),
-  preferencias: Yup.string()
-    .required('Las preferencias son requeridas'),
   correo: Yup.string()
     .email('Correo electrónico inválido')
     .required('El correo es requerido'),
@@ -45,8 +43,7 @@ const AddClient = () => {
         email: values.email,
         telefono: values.telefono,
         direccion: values.direccion,
-        preferencias: values.preferencias,
-        restaurantesFavoritos: [],
+
       };
 
       const usuarioData = {
@@ -62,7 +59,7 @@ const AddClient = () => {
 
       console.log("Payload enviado:", payload);
 
-      await axios.post('http://localhost:8080/consumidor', payload,{ withCredentials: true });
+      await axios.post('http://localhost:8080/registro/consumidor', payload,{ withCredentials: true });
       alert('Cliente registrado exitosamente');
       navigate('/login');
     } catch (error) {
@@ -89,7 +86,7 @@ const AddClient = () => {
               email: '',
               telefono: '',
               direccion: '',
-              preferencias: '',
+
               correo: '',
               contrasena: ''
             }}
@@ -123,11 +120,7 @@ const AddClient = () => {
                     <ErrorMessage name="direccion" component="span" className="error-text" />
                   </div>
 
-                  <div className="form-group-client">
-                    <label htmlFor="preferencias">Preferencias*</label>
-                    <Field type="text" name="preferencias" placeholder="Vegetariano/Carne/pollo" />
-                    <ErrorMessage name="preferencias" component="span" className="error-text" />
-                  </div>
+
 
                   <div className="form-group-client">
                     <label htmlFor="correo">Correo del Usuario*</label>
