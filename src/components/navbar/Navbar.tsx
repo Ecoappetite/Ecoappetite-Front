@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
     <Header className="navbar">
       <div className="logo">
-        <img src="/src/assets/images/logosolo.jpg" alt="Logo" />
+        <img src="/logosolo.jpg" alt="Logo" />
       </div>
       <Menu mode="horizontal" items={menuItems} className="nav-menu" />
     </Header>
