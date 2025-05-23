@@ -75,7 +75,7 @@ const Login = () => {
           <div className="brand-content">
             <div className="brand-header">
               <img
-                src="/src/assets/images/logosolo.jpg"
+                src="/logosolo.jpg"
                 alt="Ecoappetite Logo"
                 className="brand-logo"
               />
