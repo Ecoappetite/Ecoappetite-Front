@@ -9,7 +9,7 @@ import CakeIcon from '@mui/icons-material/Cake';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-import Navbar from '../components/navbar/navbar';
+import Navbar from '../components/navbar/Navbar';
 import '../styles/addPlatillo.css';
 
 interface FormErrors {

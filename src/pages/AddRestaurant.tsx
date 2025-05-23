@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Asegúrate de importar los iconos correctamente
 import axios from 'axios'; // Asegúrate de importar axios
-import Navbar from '../components/navbar/navbar';
+import Navbar from '../components/navbar/Navbar';
 import '../styles/addRestaurant.css';
 
 const validationSchema = Yup.object({
