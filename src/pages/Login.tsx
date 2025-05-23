@@ -18,7 +18,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -27,7 +27,7 @@ const Login = () => {
     if (error) setError("");
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Evita el comportamiento predeterminado del formulario
 
     if (!formData.correo || !formData.contrasena) {
@@ -50,7 +50,7 @@ const Login = () => {
       } else {
         setError("Las credenciales ingresadas son inválidas");
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error en el login:", err.message);
       setError("Las credenciales ingresadas son inválidas");
     } finally {
@@ -153,7 +153,7 @@ const Login = () => {
                   />
                 </div>
                 <div className="forgot-password">
-                  <a href="#" tabIndex="0">¿Olvidaste tu contraseña?</a>
+                  <a href="#" tabIndex={0}>¿Olvidaste tu contraseña?</a>
                 </div>
               </div>
 
@@ -206,7 +206,7 @@ const Login = () => {
           </div>
 
           <footer className="login-footer">
-            <p>¿Necesitas ayuda? <a href="#" tabIndex="0">Contáctanos</a></p>
+            <p>¿Necesitas ayuda? <a href="#" tabIndex={0}>Contáctanos</a></p>
             <p className="copyright">© 2025 ECOAPPETITE - Todos los derechos reservados</p>
           </footer>
         </div>

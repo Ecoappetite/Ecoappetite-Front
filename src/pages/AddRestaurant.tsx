@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
@@ -47,7 +47,25 @@ const AddRestaurant = () => {
     setShowPassword(!showPassword); // Cambiar entre mostrar/ocultar la contraseña
   };
 
-  const handleSubmit = async (values, { setSubmitting }) => {
+  const handleSubmit = async (
+    values: {
+      nit: string;
+      nombre: string;
+      direccion: string;
+      telefono: string;
+      whatsapp: string;
+      categoria: string;
+      imagen: string;
+      descripcion: string;
+      correo: string;
+      contrasena: string;
+    },
+    {
+      setSubmitting,
+    }: {
+      setSubmitting: (value: boolean) => void;
+    }
+  ) => {
     try {
       const token = localStorage.getItem("token"); // Obtener el token JWT del localStorage
 

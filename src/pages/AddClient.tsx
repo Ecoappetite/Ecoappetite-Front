@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
@@ -35,7 +35,21 @@ const AddClient = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = async (values, { setSubmitting }) => {
+  const handleSubmit = async (
+    values: {
+      nombre: string;
+      email: string;
+      telefono: string;
+      direccion: string;
+      correo: string;
+      contrasena: string;
+    }, 
+    { 
+      setSubmitting, 
+    }: {
+      setSubmitting: (value: boolean) => void;
+    }
+  ) => {
     try {
       const clienteData = {
         id: Math.random().toString(36).substr(2, 9),
@@ -62,7 +76,7 @@ const AddClient = () => {
       await axios.post('http://localhost:8080/registro/consumidor', payload,{ withCredentials: true });
       alert('Cliente registrado exitosamente');
       navigate('/login');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error al registrar el cliente:', error.response);
       alert('Error al registrar el cliente: ${error.response?.data?.message || error.message}');
     } finally {

@@ -161,6 +161,7 @@ const AddPlatillo = () => {
         setShowSuccessMessage(true);
         setTimeout(() => {
           setPlatillo({
+            nombreRestaurante: '',
             nombre: '',
             precioOriginal: '',
             precioDescuento: '',

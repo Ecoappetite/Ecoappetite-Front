@@ -15,7 +15,7 @@ export const login = async (correo: string, contrasena: string): Promise<string>
 
     localStorage.setItem("token", token); // Guardar el token directamente
     return token;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error en login (Frontend):", error.response?.data || error.message);
     throw new Error("Credenciales incorrectas");
   }
