@@ -34,6 +34,8 @@ function App() {
         </div>
         <div className="app-container">
           <Routes>
+            <Route path="/" element={<Login />} />
+
             {/* Ruta de inicio de sesión */}
             <Route path="/login" element={<Login />} />
 
